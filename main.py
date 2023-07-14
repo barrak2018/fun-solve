@@ -90,33 +90,28 @@ def linearFunction(dependiente = 1, independiente = 0):
 # convertion 
 def conv ():
     MuestraTitulo ()
-    print('1: binario a decimal \n2: decimal a binario')
+    print('1: binario a decimal \n2: decimal a binario\n3: binario a hexadecimal\n4: hexadecimal a binario')
 
     mode = input('==> ')
-    n = int(input('ingrese el valor a convertir:  '))
+    n = input('ingrese el valor a convertir:  ')
     _n = n
     if mode == '1':
-        S = 0
-        i = 0
-        while n >= 1:
-            d = n % 10
-            if d < 0 or d > 1:
-                raise ValueError('not a binary')
-            n = int(n/10)
-            S = S + d * pow(2, i)
-            i += 1 
+        S = int(n, 2)
+        
         print(f'el binario {_n} corresponde al decimal {S}')
     elif mode == "2":
-        d = []
-        i = 0
-        while n >= 1:
-            d.append(n % 2)
-            n = int(n/2)
-        S=""
-        for i in d[::-1]:
-            S = S + str(i)
-        MuestraTitulo ()
+        n = int(n)
+        S = bin(n)[2:]
         print(f'el Decimal {_n} corresponde al Binario {S}')
+    elif mode == "3":
+        n =  int(n, 2)
+        S = hex(n)[2:]
+        print(f'el Binario {_n} corresponde al Hexadecimal {S}')
+    elif mode == "4":
+        n =  int(n, 16)
+        S = bin(n)[2:]
+        print(f'el Hexadecimal {_n} corresponde al Binario {S}')
+    
     
     input("pulse enter para continuar")
 
