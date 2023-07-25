@@ -178,8 +178,6 @@ def conv ():
                 
                 full = full + chr(h)
             print(f"el resultado es:  {full}")
-        
-            print(f"el codigo ASCII de {target} es:  {frase}")
 
     
 
