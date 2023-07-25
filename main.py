@@ -90,11 +90,12 @@ def linearFunction(dependiente = 1, independiente = 0):
 # convertion 
 def conv ():
     MuestraTitulo ()
-    print('1: binario a decimal \n2: decimal a binario\n3: binario a hexadecimal\n4: hexadecimal a binario')
+    print('1: binario a decimal \n2: decimal a binario\n3: binario a hexadecimal\n4: hexadecimal a binario\n5: converciones ASCII')
 
     mode = input('==> ')
-    n = input('ingrese el valor a convertir:  ')
-    _n = n
+    if mode != '5':
+        n = input('ingrese el valor a convertir:  ')
+        _n = n
     if mode == '1':
         S = int(n, 2)
         
@@ -111,8 +112,78 @@ def conv ():
         n =  int(n, 16)
         S = bin(n)[2:]
         print(f'el Hexadecimal {_n} corresponde al Binario {S}')
+    elif mode == "5":
+        MuestraTitulo ()
+        print('1: ASCII a Hexadecimal\n2: ASCII a Decimal\n3: Decimal a ASCII\n4: Hexadecimal a ASCII')
+        subMode = input('>>>  ')
+
+        def ascii_to_decimal(String):
+            res = []
+            for i in String:
+                res.append(ord(i))
+            return res
+        
+            
+        def separador (frase):
+            frase = frase+" "
+            palabras = []
+            cumulo = ""
+            for i in frase:
+                if i == " ":
+                    if cumulo != "":
+                        palabras.append(cumulo)
+                        #print(cumulo)
+                    cumulo = ''
+                else:
+                    cumulo = cumulo + i
+            return palabras
+
+
+
+
+        if subMode == "1":
+            MuestraTitulo ()
+            target = input('ingrese la cadena a convertir >>>  ')
+            get = ascii_to_decimal(target)
+            frase = ""
+            for i in get:
+                i = hex(i)[2:]
+                frase = frase + f"{i} "
+            print(f"el codigo ASCII de {target} es:  {frase}")
+        elif subMode == "2":
+            MuestraTitulo ()
+            target = input('ingrese la cadena a convertir >>>  ')
+            get = ascii_to_decimal(target)
+            frase = ""
+            for i in get:
+                frase = frase + f"{i} "
+            print(f"el codigo ASCII de {target} es:  {frase}")
+        elif subMode == '3':
+            MuestraTitulo ()
+            codigo = input("Escriba los codigos en decimal separados por un espacio:  ")
+            solve = separador(codigo)
+            full = ""
+            for i in solve:
+                h = int(i)
+                
+                full = full + chr(h)
+            print(f"el resultado es:  {full}")
+        elif subMode=='4':
+            MuestraTitulo ()
+            codigo = input("Escriba los codigos en hexadecimal separados por un espacio:  ")
+            solve = separador(codigo)
+            full = ""
+            for i in solve:
+                h = int(i,16)
+                
+                full = full + chr(h)
+            print(f"el resultado es:  {full}")
+        
+            print(f"el codigo ASCII de {target} es:  {frase}")
+
     
-    
+
+
     input("pulse enter para continuar")
 
 
